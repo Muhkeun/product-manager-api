@@ -1,0 +1,11 @@
+-- V1__Create_users_table.sql
+
+CREATE TABLE users
+(
+    id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email      VARCHAR(255) NOT NULL UNIQUE COMMENT '사용자 이메일',
+    password   VARCHAR(255) NOT NULL COMMENT '사용자 비밀번호',
+    name       VARCHAR(255) NOT NULL COMMENT '사용자 이름',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
