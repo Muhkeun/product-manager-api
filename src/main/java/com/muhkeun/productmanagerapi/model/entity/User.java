@@ -1,8 +1,6 @@
 package com.muhkeun.productmanagerapi.model.entity;
 
-import com.muhkeun.productmanagerapi.converter.PasswordConverter;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +28,6 @@ public class User extends BaseEntity {
 
     @Comment("사용자 비밀번호")
     @Column(nullable = false)
-    @Convert(converter = PasswordConverter.class)
     private String password;
 
     @Comment("사용자 이름")
