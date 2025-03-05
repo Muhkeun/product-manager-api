@@ -22,3 +22,8 @@ springdoc:
   swagger-ui:
     path: /swagger
 
+app:
+  jwt:
+    encryption-key: 4e5e6e7e8e9e0e1e2e3e4e5e6e7e8e9e0
+    login-expiration : 604800000  # 1000 * 60 * 60 * 24 * 7
+    issuer: product-manager-api
