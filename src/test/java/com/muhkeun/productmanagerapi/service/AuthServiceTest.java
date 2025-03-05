@@ -3,6 +3,7 @@ package com.muhkeun.productmanagerapi.service;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -18,11 +19,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 class AuthServiceTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private AuthService authService;
@@ -35,13 +40,14 @@ class AuthServiceTest {
     @Test
     @DisplayName("회원가입 성공: 중복 이메일이 없을 경우")
     void testSignupSuccess() {
-        // given
+
         SignupRequest request = new SignupRequest();
         request.setEmail("test@example.com");
         request.setPassword("password");
         request.setName("Test User");
 
         when(userRepository.findByEmail(request.getEmail())).thenReturn(Optional.empty());
+        when(passwordEncoder.encode(anyString())).thenReturn("encodedPassword"); // Mock Password Encoding
 
         assertDoesNotThrow(() -> authService.signup(request));
 
