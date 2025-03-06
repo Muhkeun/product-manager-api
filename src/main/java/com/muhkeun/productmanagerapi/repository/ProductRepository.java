@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, QProductRepository {
     Optional<Product> findByUserIdAndName(Long userId, String name);
+
+    Optional<Product> findByUserIdAndId(Long userId, Long id);
 }

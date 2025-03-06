@@ -9,6 +9,7 @@ import lombok.Getter;
 
 @Getter
 public class ProductResponse {
+
     @Schema(description = "상품 ID")
     private final Long id;
 

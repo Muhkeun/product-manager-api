@@ -41,6 +41,7 @@ public class ProductService {
         return productRepository.findByUserIdAndName(userId, name).isPresent();
     }
 
+    @Transactional(readOnly = true)
     public Page<ProductResponse> searchProducts(Long userId, String keyword, SearchKeywordType keywordType, BigDecimal minPrice, BigDecimal maxPrice,
                                                 Pageable pageable) {
 
